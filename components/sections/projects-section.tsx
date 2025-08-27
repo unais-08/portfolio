@@ -15,19 +15,8 @@ import {
 } from "@/components/ui/card";
 
 import { Button } from "@/components/ui/button";
-
-export interface Project {
-  id: string;
-  name: string;
-  description: string;
-  github_url?: string | null;
-  live_url?: string | null;
-  main_image_url?: string | null;
-  tech_stack: string[];
-  category: string;
-  created_at: string;
-  updated_at?: string;
-}
+import { useProjects } from "@/context/ProjectContext";
+import { Project } from "@/types/projects";
 
 function ImageWithFallback({
   src,
@@ -56,26 +45,13 @@ function ImageWithFallback({
 }
 
 export function ProjectsSection() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await fetch("/api/projects?limit=3");
-        if (!res.ok) throw new Error("Failed to fetch projects");
-        const data = await res.json();
-        setProjects(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
+  const { projects, loading } = useProjects();
+  const latestProjects = [...projects]
+    .sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    )
+    .slice(0, 3);
   return (
     <section id="projects" className="container py-16">
       <div className="text-center mb-12">
@@ -92,8 +68,12 @@ export function ProjectsSection() {
         <p className="text-center text-muted-foreground">Loading projects...</p>
       )}
 
+      {latestProjects.length === 0 && (
+        <p className="text-center text-muted-foreground">No projects found.</p>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project: Project) => (
+        {latestProjects.map((project: Project) => (
           <Card key={project.id} className="flex flex-col h-full">
             <CardHeader className="relative h-48 w-full overflow-hidden rounded-t-xl">
               <ImageWithFallback
