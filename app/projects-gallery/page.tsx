@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Loader2, SlidersHorizontal, X } from "lucide-react";
-import { toast } from "sonner";
+import React, { useState } from "react";
+import { Loader2, SlidersHorizontal } from "lucide-react";
+
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -19,6 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectCard } from "@/components/projects/project-card";
 
 import { Project } from "@/types/projects";
+import { useProjects } from "@/context/ProjectContext";
 
 const projectCategories = [
   { id: "all", label: "All Projects", count: 15 },
@@ -74,48 +75,9 @@ function FilterSidebar({
 }
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const {projects,error,loading} = useProjects();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const url = "/api/projects";
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || "Failed to fetch projects.");
-        }
-
-        const data: Project[] = await response.json();
-        const parsedData = data.map((project) => ({
-          ...project,
-          tech_stack:
-            typeof project.tech_stack === "string"
-              ? JSON.parse(project.tech_stack)
-              : project.tech_stack,
-        }));
-
-        setProjects(parsedData);
-      } catch (error: any) {
-        console.error("Error fetching projects:", error);
-        setError(error.message || "An unexpected error occurred.");
-        toast.error("Unable to load projects.", {
-          description: error.message || "Please try again later.",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);

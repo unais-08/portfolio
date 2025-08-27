@@ -120,38 +120,7 @@ export default function AddProjectForm() {
                 error={errors.tech_stack}
                 placeholder="React, Next.js, Tailwind CSS, PostgreSQL"
               />
-
-              {/* <FormField
-                id="displayOrder"
-                label="Display Order"
-                type="number"
-                value={formData.display_order}
-                onChange={(value) =>
-                  updateField(
-                    "display_order",
-                    value === "" ? "" : Number(value)
-                  )
-                }
-                error={errors.display_order}
-                placeholder="1, 2, 3... (lower numbers appear first)"
-              /> */}
             </div>
-
-            {/* <div className="flex items-center space-x-2">
-              <Checkbox
-                id="featured"
-                checked={formData.featured}
-                onCheckedChange={(checked) =>
-                  updateField("featured", !!checked)
-                }
-              />
-              <Label htmlFor="featured" className="text-sm font-medium">
-                Featured Project
-                <span className="block text-xs text-muted-foreground">
-                  Featured projects are highlighted on your portfolio
-                </span>
-              </Label>
-            </div> */}
 
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
               <Button type="submit" className="flex-1" disabled={loading}>
