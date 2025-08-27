@@ -12,7 +12,9 @@ import {
   FaDatabase,
   FaCode, // For Languages category
   FaGlobe, // For Web & Frameworks category
-  FaTools, // For Tools & Platforms category
+  FaTools,
+  FaPython,
+  FaParagraph, // For Tools & Platforms category
 } from "react-icons/fa"; // Font Awesome icons
 import {
   SiTypescript,
@@ -50,7 +52,9 @@ export const skillCategories: SkillCategoryType[] = [
       { name: "C++", icon: SiCplusplus, color: "text-indigo-500" },
       { name: "JavaScript", icon: FaJs, color: "text-yellow-500" },
       { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+      { name: "Python", icon: FaPython, color: "text-yellow-500" },
       { name: "SQL", icon: FaDatabase, color: "text-gray-500" },
+
     ],
   },
   {
@@ -77,10 +81,13 @@ export const skillCategories: SkillCategoryType[] = [
     ],
   },
   {
-    category: "Tools & Platforms",
+    category: "Libraries, Tools & Platforms",
     icon: FaTools, // Category icon from react-icons/fa
     skills: [
       { name: "Git", icon: FaGitAlt, color: "text-orange-600" },
+      { name: "Pandas", icon: FaPython, color: "text-yellow-500" },
+      { name: "NumPy", icon: FaPython, color: "text-blue-500" },
+      {name: "Matplotlib", icon: FaParagraph, color: "text-red-500" },
       {
         name: "GitHub",
         icon: FaGithub,
