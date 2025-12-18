@@ -45,7 +45,7 @@ function FilterSidebar({
   return (
     <Card className={`${className} h-fit`}>
       <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold">Filter Projects</CardTitle>
+        <CardTitle className="text-lg font-semibold">Under Maintenance</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <RadioGroup value={selectedCategory} onValueChange={onCategoryChange}>

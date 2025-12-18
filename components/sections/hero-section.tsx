@@ -12,13 +12,11 @@ export function HeroSection() {
         </h1>
 
         <p className="text-xl md:text-2xl text-primary font-medium">
-          Full Stack Developer
+          Software Engineer & Backend Developer
         </p>
 
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-          I design and build modern web applications with a focus on user
-          experience, performance, and scalability. Passionate about solving
-          complex problems with elegant solutions.
+          I build scalable, high-performance web applications with a strong focus on clean code, user experience, and problem-solving. Passionate about turning complex ideas into simple, reliable solutions.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">

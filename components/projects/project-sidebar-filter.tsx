@@ -72,7 +72,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
       <aside className="hidden md:block w-56 flex-shrink-0 p-1">
         <h3 className="text-lg font-semibold text-foreground mb-4">
           Categories
-        </h3>
+        </h3> 
         {renderFilterButtons()}
       </aside>
 

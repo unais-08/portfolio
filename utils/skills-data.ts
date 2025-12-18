@@ -14,7 +14,8 @@ import {
   FaGlobe, // For Web & Frameworks category
   FaTools,
   FaPython,
-  FaParagraph, // For Tools & Platforms category
+  FaParagraph,
+  FaJava, // For Tools & Platforms category
 } from "react-icons/fa"; // Font Awesome icons
 import {
   SiTypescript,
@@ -53,8 +54,8 @@ export const skillCategories: SkillCategoryType[] = [
       { name: "JavaScript", icon: FaJs, color: "text-yellow-500" },
       { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
       { name: "Python", icon: FaPython, color: "text-yellow-500" },
+      { name: "Java", icon: FaJava, color: "text-red-500" },
       { name: "SQL", icon: FaDatabase, color: "text-gray-500" },
-
     ],
   },
   {
@@ -75,6 +76,7 @@ export const skillCategories: SkillCategoryType[] = [
         icon: SiExpress,
         color: "text-gray-700 dark:text-gray-300",
       },
+      { name: "Spring Boot", icon: FaJava, color: "text-green-700" },
       { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
       { name: "Socket.io", icon: SiSocketdotio, color: "text-blue-500" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-500" },
@@ -87,7 +89,7 @@ export const skillCategories: SkillCategoryType[] = [
       { name: "Git", icon: FaGitAlt, color: "text-orange-600" },
       { name: "Pandas", icon: FaPython, color: "text-yellow-500" },
       { name: "NumPy", icon: FaPython, color: "text-blue-500" },
-      {name: "Matplotlib", icon: FaParagraph, color: "text-red-500" },
+      { name: "Matplotlib", icon: FaParagraph, color: "text-red-500" },
       {
         name: "GitHub",
         icon: FaGithub,
