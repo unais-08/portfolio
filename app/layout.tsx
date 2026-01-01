@@ -25,8 +25,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Unais's Portfolio",
-  description: "Unais's Personal SDE Portfolio",
+  title: "Shaikh Unais | Software Engineer Portfolio",
+  description:
+    "Software Engineer skilled in React, Next.js, MERN Stack, and C++. View projects and resume.",
+  keywords: [
+    "Shaikh Unais",
+    "Software Engineer Portfolio",
+    "Next.js Developer",
+    "React Developer India",
+  ],
+  authors: [{ name: "Shaikh Unais" }],
 };
 
 export default function RootLayout({
