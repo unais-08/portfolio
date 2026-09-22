@@ -16,7 +16,6 @@ export const useProjectForm = () => {
     tech_stack: "",
     category: "",
     featured: false,
-    display_order: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -71,8 +70,9 @@ export const useProjectForm = () => {
           .map((tech) => tech.trim())
           .filter(Boolean),
         category: formData.category,
+        featured: formData.featured,
       };
-      console.log(projectData);
+      // console.log(projectData);
       await ProjectAPI.createProject(projectData);
 
       toast.success("Project Created Successfully!", {
@@ -89,7 +89,6 @@ export const useProjectForm = () => {
         tech_stack: "",
         category: "",
         featured: false,
-        display_order: "",
       });
 
       return true;
@@ -114,7 +113,6 @@ export const useProjectForm = () => {
       tech_stack: "",
       category: "",
       featured: false,
-      display_order: "",
     });
     setErrors({});
   };

@@ -1,10 +1,16 @@
 "use server";
-import { neon } from "@neondatabase/serverless";
+import { createClient } from "@supabase/supabase-js";
 
 export async function getDBConnection() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL environment variable is not defined");
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error(
+      "SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables are required"
+    );
   }
-  const sql = neon(process.env.DATABASE_URL);
-  return sql;
+
+  return createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    { auth: { autoRefreshToken: false, persistSession: false } }
+  );
 }

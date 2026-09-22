@@ -3,9 +3,6 @@ import Image from "next/image";
 import { X, Image as ImageIcon, Upload, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
-import { OurFileRouter } from "@/app/api/uploadthing/core";
-import { UploadButton } from "@uploadthing/react";
-
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -64,48 +61,42 @@ export const ImageUploadSection: React.FC<ImageUploadSectionProps> = ({
                   </p>
                 </div>
 
-                <UploadButton<OurFileRouter, "imageUploader">
-                  endpoint="imageUploader"
-                  disabled={disabled}
-                  onClientUploadComplete={(res) => {
-                    if (res && res.length > 0) {
-                      onImageUpload(res[0].url);
-                      toast.success("Image uploaded successfully!");
-                    }
-                  }}
-                  onUploadError={(error: Error) => {
-                    toast.error("Upload failed", {
-                      description: error.message,
-                    });
-                  }}
-                  appearance={{
-                    button: cn(
-                      "bg-primary hover:bg-primary/90",
-                      "focus:ring-2 focus:ring-primary focus:ring-offset-2",
-                      "rounded-md px-4 py-2 text-sm font-medium",
-                      "transition-all duration-200",
-                      "shadow-sm hover:shadow-md",
-                      "disabled:opacity-50 disabled:cursor-not-allowed",
-                      "ut-uploading:after:bg-primary/50"
-                    ),
-                    container: "w-full ",
-                    allowedContent: "text-xs text-muted-foreground mt-2",
-                  }}
-                  content={{
-                    button: ({ ready, isUploading }) => {
-                      if (isUploading) return "Uploading...";
-                      if (ready)
-                        return (
-                          <div className="flex items-center gap-2">
-                            <Upload className="w-4 h-4" />
-                            Choose Image
-                          </div>
-                        );
-                      return "Getting ready...";
-                    },
-                    allowedContent: "Image (4MB max)",
-                  }}
-                />
+                <label className={cn("cursor-pointer", disabled && "pointer-events-none opacity-50")}>
+                  <span className="bg-primary hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium inline-flex items-center gap-2">
+                    <Upload className="w-4 h-4" />
+                    Choose Image
+                  </span>
+                  <input
+                    id="mainImageUpload"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    className="sr-only"
+                    disabled={disabled}
+                    onChange={async (event) => {
+                      const file = event.target.files?.[0];
+                      if (!file) return;
+                      const formData = new FormData();
+                      formData.append("file", file);
+                      try {
+                        const response = await fetch("/api/project-images", {
+                          method: "POST",
+                          body: formData,
+                        });
+                        const result = await response.json();
+                        if (!response.ok) throw new Error(result.error);
+                        onImageUpload(result.url);
+                        toast.success("Image uploaded successfully!");
+                      } catch (uploadError) {
+                        toast.error("Upload failed", {
+                          description:
+                            uploadError instanceof Error ? uploadError.message : "Please try again",
+                        });
+                      } finally {
+                        event.target.value = "";
+                      }
+                    }}
+                  />
+                </label>
               </div>
             </div>
           ) : (
@@ -140,7 +131,17 @@ export const ImageUploadSection: React.FC<ImageUploadSectionProps> = ({
                       type="button"
                       variant="ghost"
                       size="sm"
-                      onClick={onImageRemove}
+                      onClick={async () => {
+                        try {
+                          await fetch("/api/project-images/delete", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ url: imageUrl }),
+                          });
+                        } finally {
+                          onImageRemove();
+                        }
+                      }}
                       disabled={disabled}
                       className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 h-8 w-8 p-0"
                     >

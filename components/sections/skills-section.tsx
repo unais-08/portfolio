@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SkillType, skillCategories } from "@/utils/skills-data";
+import { SkillType, skillCategories } from "@/lib/api/skills-data";
 
 export function SkillsSection() {
   return (

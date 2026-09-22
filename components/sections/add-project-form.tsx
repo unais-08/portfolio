@@ -69,6 +69,16 @@ export default function AddProjectForm() {
               />
             </div>
 
+            <label className="flex items-center gap-3 text-sm font-medium">
+              <input
+                type="checkbox"
+                checked={formData.featured}
+                onChange={(event) => updateField("featured", event.target.checked)}
+                className="h-4 w-4 rounded border-input"
+              />
+              Show this project on homepage
+            </label>
+
             <FormField
               id="description"
               label="Description"

@@ -21,5 +21,6 @@ export const projectSchema = z.object({
     .string()
     .min(1, "Category is required")
     .max(50, "Category must be less than 50 characters"),
+  featured: z.boolean().default(false),
 });
 export type ProjectSchemaType = z.infer<typeof projectSchema>;

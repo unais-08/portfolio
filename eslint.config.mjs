@@ -10,6 +10,10 @@ const compat = new FlatCompat({
 });
 
 export default [
+  {
+    ignores: [".next/**", "node_modules/**", "out/**", "build/**"],
+  },
+
   // Spread Next.js's recommended config
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 

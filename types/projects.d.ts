@@ -7,6 +7,7 @@ export interface Project {
   main_image_url?: string | null;
   tech_stack: string[];
   category: string;
+  featured: boolean;
   created_at: string;
   updated_at?: string;
 }
@@ -20,5 +21,4 @@ export interface ProjectFormData {
   tech_stack: string;
   category: string;
   featured: boolean;
-  display_order: number | string;
 }

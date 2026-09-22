@@ -29,7 +29,7 @@ export const ProjectProvider = ({
       try {
         setError(null);
         setLoading(true);
-        const res = await fetch("/api/projects");
+        const res = await fetch("/api/projects/featured");
         if (!res.ok) throw new Error("Failed to fetch projects");
         const data: Project[] = await res.json();
         const parsedData = data.map((project) => ({

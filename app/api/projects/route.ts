@@ -4,7 +4,7 @@ import { getDBConnection } from "@/db/db";
 
 /* SCHEMAS */
 
-const createProjectSchema = z.object({
+const projectSchema = z.object({
   name: z.string().min(1).max(100),
   description: z.string().min(10).max(1000),
   github_url: z.string().url().nullable().optional(),
@@ -18,6 +18,7 @@ const createProjectSchema = z.object({
     return val;
   }, z.array(z.string())),
   category: z.string().min(1).max(50),
+  featured: z.boolean().default(false),
 });
 
 
@@ -25,7 +26,7 @@ const createProjectSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const sql = await getDBConnection();
+    const supabase = await getDBConnection();
     const { searchParams } = new URL(request.url);
 
     const category = searchParams.get("category");
@@ -33,24 +34,18 @@ export async function GET(request: NextRequest) {
       ? parseInt(searchParams.get("limit")!)
       : undefined;
 
-    // Use a conditional approach directly within the sql template literal
-    const result = await sql`
-      SELECT
-        id,
-        name,
-        description,
-        github_url,
-        live_url,
-        main_image_url,
-        tech_stack,
-        category,
-        created_at,
-        updated_at
-      FROM projects
-      ${category ? sql`WHERE LOWER(category) = LOWER(${category})` : sql``}
-      ORDER BY created_at DESC
-      ${limit ? sql`LIMIT ${limit}` : sql``}
-    `;
+    let query = supabase
+      .from("projects")
+      .select(
+        "id, name, description, github_url, live_url, main_image_url, tech_stack, category, featured, created_at, updated_at"
+      )
+      .order("created_at", { ascending: false });
+
+    if (category) query = query.ilike("category", category);
+    if (limit) query = query.limit(limit);
+
+    const { data: result, error } = await query;
+    if (error) throw error;
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
@@ -66,15 +61,17 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const sql = await getDBConnection();
+    const supabase = await getDBConnection();
     const body = await request.json();
 
-    const validatedData = createProjectSchema.parse(body);
+    const validatedData = projectSchema.parse(body);
 
     // Uniqueness check
-    const existing = await sql`
-      SELECT id FROM projects WHERE LOWER(name) = LOWER(${validatedData.name})
-    `;
+    const { data: existing, error: existingError } = await supabase
+      .from("projects")
+      .select("id")
+      .ilike("name", validatedData.name);
+    if (existingError) throw existingError;
     if (existing.length > 0) {
       return NextResponse.json(
         { error: "A project with this name already exists" },
@@ -82,36 +79,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert
-    const result = await sql`
-      INSERT INTO projects (
-        name,
-        description,
-        github_url,
-        live_url,
-        main_image_url,
-        tech_stack,
-        category,
-        created_at,
-        updated_at
-      ) VALUES (
-        ${validatedData.name},
-        ${validatedData.description},
-        ${validatedData.github_url || null},
-        ${validatedData.live_url || null},
-        ${validatedData.main_image_url || null},
-        ${JSON.stringify(validatedData.tech_stack)},
-        ${validatedData.category},
-        NOW(),
-        NOW()
-      )
-      RETURNING *
-    `;
+    const { data: result, error } = await supabase
+      .from("projects")
+      .insert({
+        name: validatedData.name,
+        description: validatedData.description,
+        github_url: validatedData.github_url || null,
+        live_url: validatedData.live_url || null,
+        main_image_url: validatedData.main_image_url || null,
+        tech_stack: validatedData.tech_stack,
+        category: validatedData.category,
+        featured: validatedData.featured,
+      })
+      .select()
+      .single();
+    if (error) throw error;
 
-    console.log("DataBase Insert Result:", result);
-    const newProject = result[0];
-
-    return NextResponse.json(newProject, { status: 201 });
+    return NextResponse.json(result, { status: 201 });
   } catch (error) {
     console.error("Error creating project:", error);
     if (error instanceof z.ZodError) {
