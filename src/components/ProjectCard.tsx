@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <p>{project.description}</p>
     <div className="tag-list">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
     <div className="project-card-actions">
-      {project.liveUrl ? <a className="card-link" href={project.liveUrl} target="_blank" rel="noreferrer">Visit <Arrow /></a> : <span className="card-link is-disabled" aria-label="Live project unavailable">Visit <Arrow /></span>}
+      {project.liveUrl ? <a className="card-link" href={project.liveUrl} target="_blank" rel="noreferrer">Visit <Arrow /></a> : <span className="card-link is-disabled" aria-label="Live project unavailable">Visit unavailable</span>}
       <a className="card-link" href={project.githubUrl} target="_blank" rel="noreferrer">GitHub <Arrow /></a>
     </div>
   </article>
