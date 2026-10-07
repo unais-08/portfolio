@@ -231,8 +231,8 @@ h2 em {
     content: '';
     position: absolute;
     z-index: -1;
-    inset: 42% -3px -2px;
-    background: linear-gradient(100deg, rgba(217, 255, 82, .55), rgba(217, 255, 82, .9), rgba(217, 255, 82, .45));
+    inset: -1px -4px -1px;
+    background: linear-gradient(100deg, rgba(239, 255, 153, .72), rgba(229, 255, 122, .88), rgba(242, 255, 174, .68));
     transform: rotate(-2deg);
 }
 
@@ -250,6 +250,26 @@ h2 em {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+    padding: clamp(24px, 4vw, 42px);
+    position: relative;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .22);
+    transition: background .25s, border-color .25s;
+}
+
+.project-grid:hover {
+    background: #fff;
+    border-color: #b9b8b0;
+}
+
+.project-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: clamp(24px, 4vw, 42px);
+    width: 42px;
+    height: 3px;
+    background: var(--accent);
 }
 
 .project-card {
@@ -406,13 +426,39 @@ h2 em {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 0;
     margin-top: 56px;
+    padding: clamp(24px, 4vw, 42px);
+    position: relative;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .22);
+    transition: background .25s, border-color .25s;
+}
+
+.skills-grid:hover {
+    background: #fff;
+    border-color: #b9b8b0;
+}
+
+.skills-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: clamp(24px, 4vw, 42px);
+    width: 42px;
+    height: 3px;
+    background: var(--accent);
 }
 
 .skill-group {
-    border-top: 1px solid var(--ink);
-    padding-top: 15px;
+    min-height: 190px;
+    padding: 14px 20px 8px;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.skill-group:nth-child(4n + 1) {
+    border-left: 0;
 }
 
 .skill-group h3 {
@@ -752,6 +798,11 @@ h2 em {
         min-height: 330px;
     }
 
+    .project-grid {
+        padding: 22px 16px;
+        gap: 12px;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 42px;
@@ -784,7 +835,21 @@ h2 em {
 
     .skills-grid {
         margin-top: 52px;
-        gap: 35px;
+        padding: 22px 16px;
+        gap: 0;
+    }
+
+    .skill-group {
+        min-height: 180px;
+        padding: 18px 12px 8px;
+    }
+
+    .skill-group:nth-child(4n + 1) {
+        border-left: 1px solid var(--line);
+    }
+
+    .skill-group:nth-child(2n + 1) {
+        border-left: 0;
     }
 
 
