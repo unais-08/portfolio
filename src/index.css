@@ -225,19 +225,23 @@ h2 em {
 .section-label {
     display: flex;
     gap: 25px;
-    color: var(--muted);
+    color: #50514c;
 }
 
 .section-label span:first-child {
     position: relative;
-    z-index: 0;
-    color: #355dff;
+    color: #2444b8;
     font-size: 13px;
     letter-spacing: .08em;
+}
+
+.section-label span:last-child {
+    position: relative;
+    z-index: 0;
     padding: 1px 4px;
 }
 
-.section-label span:first-child::before {
+.section-label span:last-child::before {
     content: '';
     position: absolute;
     z-index: -1;
