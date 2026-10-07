@@ -26,6 +26,12 @@
 .contact-links a:hover, .contact-links a:hover .contact-link-arrow { color: #355dff; }
 .contact-links a:hover .contact-link-arrow { transform: translateX(4px); }
 
+@media (max-width: 900px) {
+    .contact-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 720px) {
     .contact-section { padding: 52px 0 64px; }
     .contact-panel { margin-top: 40px; padding: 36px 22px 28px; grid-template-columns: 1fr; gap: 44px; }

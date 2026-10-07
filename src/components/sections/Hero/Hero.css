@@ -256,7 +256,7 @@
         line-height: 1.55;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         & .hv2-grid {
             grid-template-columns: 1fr;
             padding-bottom: 88px;
@@ -264,7 +264,7 @@
 
         & .hv2-visual {
             justify-self: start;
-            max-width: 460px;
+            max-width: min(460px, 100%);
         }
     }
 
