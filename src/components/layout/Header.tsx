@@ -49,6 +49,8 @@ export function Header({ detail = false }: { detail?: boolean }) {
         <a
           className="button nav-contact"
           href={site.resume}
+          target="_blank"
+          rel="noreferrer"
           onClick={close}
         >
           Resume <Arrow />

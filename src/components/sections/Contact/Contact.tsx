@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { site } from '../../../data/site'
 import { Arrow } from '../../ui/Arrow'
 import { SectionLabel } from '../../ui/SectionLabel'
@@ -10,6 +11,17 @@ const links = [
 ]
 
 export function ContactSection() {
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle')
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(site.email)
+      setCopyStatus('copied')
+    } catch {
+      setCopyStatus('failed')
+    }
+  }
+
   return (
     <section className="contact-section section" id="contact">
       <SectionLabel number="04">Contact</SectionLabel>
@@ -22,12 +34,21 @@ export function ContactSection() {
           </p>
 
           <h2>
-          Have a role or an interesting problem? <mark>Let’s talk.</mark>
+            Have a role or an interesting problem? <mark>Let’s talk.</mark>
           </h2>
 
-          <a className="button contact-cta" href={`mailto:${site.email}`}>
-            Send an email <Arrow />
-          </a>
+          <button
+            className="button contact-cta"
+            type="button"
+            onClick={copyEmail}
+          >
+            {copyStatus === 'copied'
+              ? 'Email copied'
+              : copyStatus === 'failed'
+                ? 'Copy failed'
+                : 'Copy email'}{' '}
+            <Arrow />
+          </button>
 
           <p className="contact-email-text">{site.email}</p>
         </div>
@@ -35,7 +56,7 @@ export function ContactSection() {
         <ul className="contact-links">
           {links.map(({ label, href }) => (
             <li key={label}>
-              <a href={href}>
+              <a href={href} target="_blank" rel="noreferrer">
                 {label}
                 <span className="contact-link-arrow">
                   <Arrow />

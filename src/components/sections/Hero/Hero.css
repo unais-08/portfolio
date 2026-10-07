@@ -79,6 +79,11 @@
         display: inline-block;
     }
 
+    & .hero-actions mark {
+        color: inherit;
+        background: linear-gradient(transparent 62%, var(--accent) 62% 92%, transparent 92%);
+    }
+
     /* profile.json card */
     & .hv2-visual {
         position: relative;
@@ -110,15 +115,15 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: #e47d6d;
+        background: #FF605C;
     }
 
     & .hv2-bar i:nth-child(2) {
-        background: #e2bd68;
+        background: #FFBD44 ;
     }
 
     & .hv2-bar i:nth-child(3) {
-        background: #75af72;
+        background: #00CA4E ;
     }
 
     & .hv2-bar small {
@@ -159,6 +164,14 @@
 
     & .tk-str {
         color: #b9d895;
+    }
+
+    & .hv2-name-line .tk-str {
+        color: var(--accent);
+        font-weight: 600;
+        /* text-decoration: underline; */
+        /* text-decoration-thickness: 2px; */
+        /* text-underline-offset: 3px; */
     }
 
     & .tk-bool {
