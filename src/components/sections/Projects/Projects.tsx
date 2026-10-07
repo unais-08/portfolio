@@ -1,6 +1,7 @@
-import { projects } from '../../data/site'
-import { ProjectCard } from '../ui/ProjectCard'
-import { SectionLabel } from '../ui/SectionLabel'
+import { projects } from '../../../data/site'
+import { ProjectCard } from '../../ui/ProjectCard'
+import { SectionLabel } from '../../ui/SectionLabel'
+import './Projects.css'
 
 export function WorkSection() {
   return <section className="work section" id="work">

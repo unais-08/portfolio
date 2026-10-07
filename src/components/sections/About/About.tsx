@@ -1,4 +1,5 @@
-import { SectionLabel } from '../ui/SectionLabel'
+import { SectionLabel } from '../../ui/SectionLabel'
+import './About.css'
 
 export function AboutSection() {
   return <section className="about section" id="about">

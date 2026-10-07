@@ -1,5 +1,6 @@
-import { skills } from '../../data/site'
-import { SectionLabel } from '../ui/SectionLabel'
+import { skills } from '../../../data/site'
+import { SectionLabel } from '../../ui/SectionLabel'
+import './Skills.css'
 
 export function SkillsSection() {
   return <section className="skills section">

@@ -1,4 +1,4 @@
-import './hero.css'
+import './Hero.css'
 
 type HeroProps = {
   site: { name: string; role: string; focus: string[]; github: string }

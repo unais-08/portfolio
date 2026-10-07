@@ -1,0 +1,26 @@
+/* Contact section */
+.contact-section { padding: 72px 0 96px; }
+.contact-panel { margin-top: 56px; padding: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, .7fr); gap: clamp(40px, 8vw, 110px); background: rgba(255, 255, 255, .22); color: var(--ink); border: 1px solid var(--line); position: relative; transition: background .25s, border-color .25s; }
+.contact-panel:hover { background: #fff; border-color: #b9b8b0; }
+.contact-panel::before { content: ''; position: absolute; top: 0; left: clamp(28px, 5vw, 64px); width: 42px; height: 3px; background: var(--accent); }
+.contact-status { display: flex; align-items: center; margin: 0; color: var(--muted); font: 500 12px 'DM Mono', monospace; letter-spacing: .04em; }
+.contact-status .status-dot { margin: 0 10px 0 0; }
+.contact-section .contact-panel h2 { max-width: 600px; margin: 28px 0 40px; font-size: clamp(2.3rem, 4.3vw, 4.1rem); line-height: 1; letter-spacing: -.065em; font-weight: 500; }
+.contact-section .contact-panel h2 em { display: block; color: #355dff; font-style: normal; }
+.contact-cta { background: var(--accent); color: var(--ink); font-weight: 600; border: 1px solid var(--ink); }
+.contact-email-text { margin: 18px 0 0; color: var(--muted); font: 13px 'DM Mono', monospace; user-select: all; }
+.contact-links { list-style: none; margin: 0; padding: 0; align-self: end; }
+.contact-links li { border-top: 1px solid var(--line); }
+.contact-links li:last-child { border-bottom: 1px solid var(--line); }
+.contact-links a { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; font-size: 17px; letter-spacing: -.02em; transition: color .2s; }
+.contact-link-arrow { display: inline-block; color: var(--muted); transition: transform .2s, color .2s; }
+.contact-panel a:focus-visible { outline-color: #355dff; }
+.contact-links a:hover, .contact-links a:hover .contact-link-arrow { color: #355dff; }
+.contact-links a:hover .contact-link-arrow { transform: translateX(4px); }
+
+@media (max-width: 720px) {
+    .contact-section { padding: 52px 0 64px; }
+    .contact-panel { margin-top: 40px; padding: 36px 22px 28px; grid-template-columns: 1fr; gap: 44px; }
+    .contact-panel::before { left: 22px; }
+    .contact-section .contact-panel h2 { font-size: clamp(2.4rem, 11vw, 3.6rem); }
+}

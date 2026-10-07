@@ -1,6 +1,7 @@
-import { site } from '../../data/site'
-import { Arrow } from '../ui/Arrow'
-import { SectionLabel } from '../ui/SectionLabel'
+import { site } from '../../../data/site'
+import { Arrow } from '../../ui/Arrow'
+import { SectionLabel } from '../../ui/SectionLabel'
+import './Contact.css'
 
 const links = [
   { label: 'GitHub', href: site.github },

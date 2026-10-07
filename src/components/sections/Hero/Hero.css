@@ -1,4 +1,4 @@
-/* Hero v2 — scoped under .hero.hero-v2 so it wins over the older .hero rules in index.css */
+/* Hero section */
 .hero.hero-v2 {
     min-height: 0;
     justify-content: flex-start;
