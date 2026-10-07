@@ -257,12 +257,16 @@ h2 em {
 }
 
 .section {
-    padding: 115px 0;
+    padding: 72px 0;
     border-bottom: 1px solid var(--line);
 }
 
 .work.section {
     padding-bottom: 72px;
+}
+
+.work.section > .section-label {
+    margin-bottom: 56px;
 }
 
 .work.section + .skills.section {
@@ -429,7 +433,7 @@ h2 em {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(320px, .72fr);
     gap: clamp(55px, 12vw, 170px);
-    margin-top: 82px;
+    margin-top: 56px;
     align-items: start;
 }
 
@@ -439,22 +443,11 @@ h2 em {
     padding-bottom: 24px;
 }
 
-.about-grid h2::after {
-    content: '03';
-    display: block;
-    width: fit-content;
-    margin-top: 34px;
-    padding: 5px 8px;
-    border: 1px solid var(--line);
-    color: #355dff;
-    font: 10px 'DM Mono', monospace;
-    letter-spacing: .12em;
-}
 
 .about-copy {
     max-width: 500px;
     padding: 22px 0 0 28px;
-    position: relative;
+    text-align: justify;
     border-top: 1px solid var(--line);
     border-left: 1px solid var(--line);
 }
@@ -510,7 +503,7 @@ h2 em {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: 75px;
+    margin-top: 56px;
 }
 
 .skill-group {
@@ -536,7 +529,7 @@ h2 em {
     grid-template-columns: 25% 1fr;
     border-top: 1px solid var(--line);
     padding: 25px 0;
-    margin-top: 30px;
+    margin-top: 32px;
 }
 
 .journey-row strong {
@@ -562,6 +555,10 @@ h2 em {
     gap: 8%;
     min-height: 390px;
     align-items: start;
+}
+
+.contact-content {
+    padding-top: 8px;
 }
 
 .contact .section-label {
@@ -838,11 +835,15 @@ h2 em {
     }
 
     .section {
-        padding: 78px 0;
+        padding: 52px 0;
     }
 
     .work.section {
         padding-bottom: 52px;
+    }
+
+    .work.section > .section-label {
+        margin-bottom: 52px;
     }
 
     .work.section + .skills.section {
@@ -893,7 +894,7 @@ h2 em {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 42px;
-        margin-top: 54px;
+        margin-top: 52px;
     }
 
     .about-copy {
@@ -921,7 +922,7 @@ h2 em {
     }
 
     .skills-grid {
-        margin-top: 50px;
+        margin-top: 52px;
         gap: 35px;
     }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { site } from '../data/site'
-import { Arrow } from './Arrow'
+import { site } from '../../data/site'
+import { Arrow } from '../ui/Arrow'
 
 export function Header({ detail = false }: { detail?: boolean }) {
   const [open, setOpen] = useState(false)

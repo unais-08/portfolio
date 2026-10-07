@@ -1,4 +1,4 @@
-import type { Project } from '../data/site'
+import type { Project } from '../../data/site'
 import { Arrow } from './Arrow'
 
 export function ProjectCard({ project }: { project: Project }) {
