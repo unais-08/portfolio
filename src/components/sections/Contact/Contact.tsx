@@ -22,7 +22,7 @@ export function ContactSection() {
           </p>
 
           <h2>
-            Have a role or an interesting problem? <em>Let’s talk.</em>
+          Have a role or an interesting problem? <mark>Let’s talk.</mark>
           </h2>
 
           <a className="button contact-cta" href={`mailto:${site.email}`}>

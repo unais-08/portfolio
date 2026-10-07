@@ -6,7 +6,15 @@
 .contact-status { display: flex; align-items: center; margin: 0; color: var(--muted); font: 500 12px 'DM Mono', monospace; letter-spacing: .04em; }
 .contact-status .status-dot { margin: 0 10px 0 0; }
 .contact-section .contact-panel h2 { max-width: 600px; margin: 28px 0 40px; font-size: clamp(2.3rem, 4.3vw, 4.1rem); line-height: 1; letter-spacing: -.065em; font-weight: 500; }
-.contact-section .contact-panel h2 em { display: block; color: #355dff; font-style: normal; }
+.contact-section .contact-panel h2 mark {
+    display: inline;
+    color: inherit;
+    padding: 0 0.06em;
+    margin: 0 -0.06em;
+    background: linear-gradient(transparent 62%, var(--accent) 62% 92%, transparent 92%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
 .contact-cta { background: var(--accent); color: var(--ink); font-weight: 600; border: 1px solid var(--ink); }
 .contact-email-text { margin: 18px 0 0; color: var(--muted); font: 13px 'DM Mono', monospace; user-select: all; }
 .contact-links { list-style: none; margin: 0; padding: 0; align-self: end; }

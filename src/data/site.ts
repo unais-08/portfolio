@@ -50,7 +50,7 @@ export const projects: Project[] = [
 ]
 
 export const skills = [
-  { category: 'Languages', items: ['TypeScript', 'JavaScript', 'SQL'] },
+  { category: 'Languages', items: ['C++', 'TypeScript', 'JavaScript', 'SQL'] },
   { category: 'Frontend', items: ['React', 'Next.js', 'HTML', 'CSS'] },
   { category: 'Backend', items: ['Node.js', 'Express', 'REST APIs'] },
   { category: 'Database', items: ['PostgreSQL'] },

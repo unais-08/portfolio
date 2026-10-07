@@ -43,6 +43,12 @@ button:focus-visible {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(245, 244, 239, .78);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 }
 
 .wordmark {
@@ -71,10 +77,14 @@ button:focus-visible {
 }
 
 .nav-contact {
-    background: var(--ink);
-    color: #fff;
-    padding: 12px 17px;
-    border-radius: 2px;
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 600;
+    border: 1px solid var(--ink);
+}
+
+.main-nav .nav-contact:hover {
+    opacity: 1;
 }
 
 .menu-button {
@@ -143,7 +153,7 @@ h2 em {
     display: inline-flex;
     align-items: center;
     gap: 18px;
-    padding: 15px 18px;
+    padding: 10px 18px;
     font-size: 13px;
     transition: transform .2s, background .2s;
 }
@@ -364,12 +374,6 @@ h2 em {
 
     .main-nav.is-open {
         display: flex;
-    }
-
-    .nav-contact {
-        background: none;
-        padding: 0;
-        color: var(--accent);
     }
 
     main {
