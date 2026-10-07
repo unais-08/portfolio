@@ -4,11 +4,6 @@ type HeroProps = {
     site: { name: string; role: string; focus: string[]; github: string }
 }
 
-const focus = [
-    { title: 'Backend systems', text: 'APIs, queues, and workers that handle failure on purpose.' },
-    { title: 'Distributed thinking', text: 'Coordination, health checks, and trade-offs across nodes.' },
-    { title: 'Useful interfaces', text: 'React and Next.js front ends that stay simple to use.' },
-]
 
 // Minimal JSON highlighter: keys, strings, booleans
 const highlight = (line: string) =>
@@ -78,15 +73,6 @@ export default function Hero({ site }: HeroProps) {
                     </figure>
                     <span className="hv2-note">currently learning → distributed systems</span>
                 </div>
-            </div>
-
-            <div className="hv2-focus">
-                {focus.map((item) => (
-                    <div className="hv2-focus-item" key={item.title}>
-                        <strong>{item.title}</strong>
-                        <p>{item.text}</p>
-                    </div>
-                ))}
             </div>
         </section>
     )

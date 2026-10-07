@@ -350,7 +350,23 @@ h2 em {
 
 .card-link {
     width: fit-content;
+}
+
+.project-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     margin-top: auto;
+}
+
+.project-card-actions .card-link {
+    margin-top: 0;
+}
+
+.card-link.is-disabled {
+    color: var(--muted);
+    border-bottom-color: var(--line);
+    cursor: not-allowed;
 }
 
 .small-note {
