@@ -1,0 +1,302 @@
+/* Hero v2 — scoped under .hero.hero-v2 so it wins over the older .hero rules in index.css */
+.hero.hero-v2 {
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 0;
+
+    & .hv2-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: clamp(40px, 6vw, 96px);
+        align-items: center;
+        padding-bottom: clamp(72px, 8vw, 104px);
+    }
+
+    & .hv2-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    & .hv2-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 32px;
+        padding: 7px 14px 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        color: var(--muted);
+    }
+
+    & .hv2-status b {
+        color: var(--ink);
+        font-weight: 500;
+    }
+
+    & .status-dot {
+        margin: 0;
+        box-shadow: 0 0 0 3px rgba(114, 173, 85, 0.22);
+    }
+
+    & h1 {
+        max-width: 12.5em;
+        margin: 0 0 28px;
+        font-size: clamp(2.8rem, 5.6vw, 5.4rem);
+        line-height: 1;
+        letter-spacing: -0.06em;
+        font-weight: 500;
+        text-wrap: balance;
+    }
+
+    & h1 mark {
+        color: inherit;
+        padding: 0 0.06em;
+        margin: 0 -0.06em;
+        background: linear-gradient(transparent 62%, var(--accent) 62% 92%, transparent 92%);
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    & .hv2-lede {
+        max-width: 440px;
+        margin: 0 0 36px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    & .button .button,
+    & .button span {
+        transition: transform 0.2s;
+    }
+
+    & .button:hover span,
+    & .text-link:hover span {
+        transform: translate(2px, -2px);
+        display: inline-block;
+    }
+
+    /* profile.json card */
+    & .hv2-visual {
+        position: relative;
+        justify-self: end;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    & .hv2-card {
+        margin: 0;
+        overflow: hidden;
+        background: #20211f;
+        border: 1px solid #cfcfc7;
+        border-radius: 12px;
+        box-shadow: 0 34px 60px -34px rgba(29, 29, 27, 0.5);
+    }
+
+    & .hv2-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        height: 38px;
+        padding: 0 14px;
+        background: #292a27;
+        border-bottom: 1px solid #383a37;
+    }
+
+    & .hv2-bar i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e47d6d;
+    }
+
+    & .hv2-bar i:nth-child(2) {
+        background: #e2bd68;
+    }
+
+    & .hv2-bar i:nth-child(3) {
+        background: #75af72;
+    }
+
+    & .hv2-bar small {
+        margin-left: auto;
+        color: #85877f;
+        font: 11px 'DM Mono', monospace;
+    }
+
+    & .hv2-code {
+        margin: 0;
+        padding: 20px 0;
+        overflow-x: auto;
+        counter-reset: ln;
+        color: #d9d9d1;
+        font: 12.5px/1.9 'DM Mono', monospace;
+    }
+
+    & .hv2-line {
+        display: block;
+        white-space: pre;
+        padding-right: 20px;
+    }
+
+    & .hv2-line::before {
+        counter-increment: ln;
+        content: counter(ln);
+        display: inline-block;
+        width: 3em;
+        padding-right: 1.2em;
+        text-align: right;
+        color: #5d5f58;
+        user-select: none;
+    }
+
+    & .tk-key {
+        color: #c6a7f2;
+    }
+
+    & .tk-str {
+        color: #b9d895;
+    }
+
+    & .tk-bool {
+        color: #e2bd68;
+    }
+
+    & .hv2-caret {
+        display: inline-block;
+        width: 0.55ch;
+        height: 1.15em;
+        margin-left: 2px;
+        vertical-align: -0.2em;
+        background: var(--accent);
+        animation: hv2-blink 1.1s steps(1) infinite;
+    }
+
+    & .hv2-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 36px;
+        padding: 0 16px;
+        background: #292a27;
+        border-top: 1px solid #383a37;
+        color: #85877f;
+        font: 11px 'DM Mono', monospace;
+    }
+
+    & .hv2-foot span:last-child {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent);
+    }
+
+    & .hv2-foot i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+    }
+
+    & .hv2-note {
+        position: absolute;
+        right: 4px;
+        bottom: -46px;
+        transform: rotate(-3deg);
+        font: 400 17px Kalam, cursive;
+        color: #355dff;
+    }
+
+    /* Focus band */
+    & .hv2-focus {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
+    }
+
+    & .hv2-focus-item {
+        display: grid;
+        gap: 8px;
+        align-content: start;
+        padding: 28px 28px 32px 0;
+    }
+
+    & .hv2-focus-item+.hv2-focus-item {
+        padding-left: 28px;
+        border-left: 1px solid var(--line);
+    }
+
+    & .hv2-focus-item strong {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+    }
+
+    & .hv2-focus-item p {
+        margin: 0;
+        max-width: 280px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+        & .hv2-grid {
+            grid-template-columns: 1fr;
+            padding-bottom: 88px;
+        }
+
+        & .hv2-visual {
+            justify-self: start;
+            max-width: 460px;
+        }
+    }
+
+    @media (max-width: 720px) {
+        & {
+            padding-top: 4px;
+        }
+
+        & h1 {
+            font-size: clamp(2.6rem, 12vw, 4rem);
+        }
+
+        & .hv2-note {
+            right: 0;
+            font-size: 14px;
+        }
+
+        & .hv2-code {
+            font-size: 11px;
+        }
+
+        & .hv2-focus {
+            grid-template-columns: 1fr;
+        }
+
+        & .hv2-focus-item,
+        & .hv2-focus-item+.hv2-focus-item {
+            padding: 20px 0;
+            border-left: 0;
+        }
+
+        & .hv2-focus-item+.hv2-focus-item {
+            border-top: 1px solid var(--line);
+        }
+    }
+}
+
+@keyframes hv2-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hv2-caret {
+        animation: none;
+    }
+}

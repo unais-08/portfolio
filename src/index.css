@@ -11,8 +11,50 @@
     --accent: #d9ff52;
 }
 
+.hero-rail {
+    position: relative;
+    padding: 18px 0 0 25px;
+    border-left: 1px solid var(--line);
+}
+
+.rail-label {
+    color: var(--muted);
+    font: 11px 'DM Mono', monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.rail-focus {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 13px;
+}
+
+.rail-focus span {
+    color: #355dff;
+    font: 10px 'DM Mono', monospace;
+}
+
+.hero-rail .editor-card {
+    margin-top: 25px;
+}
+
 * {
     box-sizing: border-box;
+}
+
+.hero-rail {
+    padding: 0;
+    border-left: 0;
+}
+
+.rail-label {
+    margin-bottom: 10px;
 }
 
 html {
@@ -38,7 +80,7 @@ button:focus-visible {
 .site-header {
     max-width: 1240px;
     margin: auto;
-    padding: 28px 32px;
+    padding: 22px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -90,13 +132,26 @@ main {
 }
 
 .hero {
-    min-height: 680px;
-    padding: 110px 0 100px;
+    min-height: 720px;
+    padding: 92px 0 105px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid var(--line);
+}
+
+.hero-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.hero-index {
+    color: var(--muted);
+    font: 11px 'DM Mono', monospace;
+    letter-spacing: .08em;
 }
 
 .eyebrow,
@@ -565,7 +620,7 @@ h2 em {
 
 @media (max-width: 720px) {
     .site-header {
-        padding: 22px 20px;
+        padding: 18px 20px;
     }
 
     .menu-button {
@@ -611,6 +666,14 @@ h2 em {
     .hero {
         min-height: 650px;
         padding: 80px 0 50px;
+    }
+
+    .hero-intro {
+        margin-bottom: 24px;
+    }
+
+    .hero-index {
+        display: none;
     }
 
     .hero h1 {
