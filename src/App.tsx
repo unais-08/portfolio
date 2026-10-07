@@ -27,9 +27,9 @@ function Home() {
 
           <div className="section-intro">
             <h2>
-              Projects are where
+              Projects
               <br />
-              <em>the thinking shows.</em>
+              <em>where the thinking shows.</em>
             </h2>
           </div>
 
@@ -47,9 +47,33 @@ function Home() {
           </p>
         </section>
 
+        {/* Skills section */}
+        <section className="skills section">
+          <SectionLabel number="02">Tools & interests</SectionLabel>
+
+          <div className="skills-grid">
+            {skills.map(({ category, items }) => (
+              <div className="skill-group" key={category}>
+                <h3>{category}</h3>
+
+                <div className="skill-items">
+                  {items.map((item) => (
+                    <span className="skill-item" key={item}>
+                      <i aria-hidden="true">
+                        {item.slice(0, 2).toUpperCase()}
+                      </i>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* About section */}
         <section className="about section" id="about">
-          <SectionLabel number="02">A little about me</SectionLabel>
+          <SectionLabel number="03">A little about me</SectionLabel>
 
           <div className="about-grid">
             <h2>
@@ -79,58 +103,24 @@ function Home() {
           </div>
         </section>
 
-        {/* Skills section */}
-        <section className="skills section">
-          <SectionLabel number="03">Tools & interests</SectionLabel>
-
-          <div className="skills-grid">
-            {skills.map(({ category, items }) => (
-              <div className="skill-group" key={category}>
-                <h3>{category}</h3>
-
-                <div className="skill-items">
-                  {items.map((item) => (
-                    <span className="skill-item" key={item}>
-                      <i aria-hidden="true">
-                        {item.slice(0, 2).toUpperCase()}
-                      </i>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Journey section */}
         <section className="journey section">
           <SectionLabel number="04">
-            Engineering journey
+            Education & journey
           </SectionLabel>
 
           <div className="journey-row">
-            <strong>2025</strong>
+            <strong>2021-2025</strong>
 
             <div>
-              <h3>Computer Engineering Graduate</h3>
+              <h3>Bachelor of Technology in Computer Engineering</h3>
               <p>
-                Building a practical foundation in software engineering.
+                Dr. Babasaheb Ambedkar Technological University, Lonere, India
               </p>
             </div>
           </div>
 
-          <div className="journey-row">
-            <strong>Now</strong>
 
-            <div>
-              <h3>Building & learning</h3>
-              <p>
-                Strengthening full-stack, backend, and systems thinking
-                through projects.
-              </p>
-            </div>
-          </div>
         </section>
 
         {/* Contact section */}
@@ -143,7 +133,7 @@ function Home() {
 
           <div className="contact-content">
             <h2>
-              Let’s talk <em>→</em>
+              Let’s connect <em>→</em>
             </h2>
 
             <a

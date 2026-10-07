@@ -261,6 +261,38 @@ h2 em {
     border-bottom: 1px solid var(--line);
 }
 
+.work.section {
+    padding-bottom: 72px;
+}
+
+.work.section + .skills.section {
+    padding-top: 72px;
+}
+
+.skills.section {
+    padding-bottom: 72px;
+}
+
+.skills.section + .about.section {
+    padding-top: 72px;
+}
+
+.about.section {
+    padding-bottom: 72px;
+}
+
+.about.section + .journey.section {
+    padding-top: 72px;
+}
+
+.journey.section {
+    padding-bottom: 72px;
+}
+
+.journey.section + .contact.section {
+    padding-top: 72px;
+}
+
 .section-label {
     display: flex;
     gap: 25px;
@@ -455,16 +487,30 @@ h2 em {
 
 .contact {
     display: grid;
-    grid-template-columns: 35% 1fr;
-    min-height: 470px;
+    grid-template-columns: minmax(220px, 30%) 1fr;
+    gap: 8%;
+    min-height: 390px;
+    align-items: start;
+}
+
+.contact .section-label {
+    padding-top: 10px;
 }
 
 .contact-content h2 {
-    font-size: clamp(3.5rem, 8vw, 8rem);
+    max-width: 620px;
+    font-size: clamp(3.25rem, 6vw, 6rem);
     font-weight: 500;
-    letter-spacing: -.08em;
-    line-height: .9;
-    margin: 0 0 45px;
+    letter-spacing: -.065em;
+    line-height: .98;
+    margin: 0 0 34px;
+}
+
+.contact-content h2 em {
+    display: inline-block;
+    margin-left: .08em;
+    transform: translateY(-.04em);
+    font-size: .82em;
 }
 
 .contact-content h2 em {
@@ -473,15 +519,22 @@ h2 em {
 }
 
 .contact-email {
+    display: inline-block;
     font: 16px 'DM Mono', monospace;
     border-bottom: 1px solid var(--ink);
-    padding-bottom: 8px;
+    padding-bottom: 9px;
+    transition: color .2s, border-color .2s;
+}
+
+.contact-email:hover {
+    color: #355dff;
+    border-color: #355dff;
 }
 
 .social-links {
     display: flex;
-    gap: 22px;
-    margin-top: 70px;
+    gap: 28px;
+    margin-top: 58px;
 }
 
 .social-links a {
@@ -717,6 +770,38 @@ h2 em {
         padding: 78px 0;
     }
 
+    .work.section {
+        padding-bottom: 52px;
+    }
+
+    .work.section + .skills.section {
+        padding-top: 52px;
+    }
+
+    .skills.section {
+        padding-bottom: 52px;
+    }
+
+    .skills.section + .about.section {
+        padding-top: 52px;
+    }
+
+    .about.section {
+        padding-bottom: 52px;
+    }
+
+    .about.section + .journey.section {
+        padding-top: 52px;
+    }
+
+    .journey.section {
+        padding-bottom: 52px;
+    }
+
+    .journey.section + .contact.section {
+        padding-top: 52px;
+    }
+
     .section-intro {
         margin: 50px 0 35px;
     }
@@ -746,19 +831,21 @@ h2 em {
     }
 
     .contact {
-        min-height: 500px;
+        min-height: 420px;
     }
 
     .contact-content {
-        margin-top: 65px;
+        margin-top: 42px;
     }
 
     .contact-content h2 {
-        font-size: 18vw;
+        font-size: clamp(3rem, 12vw, 5rem);
+        line-height: .98;
+        margin-bottom: 32px;
     }
 
     .social-links {
-        margin-top: 50px;
+        margin-top: 42px;
         flex-wrap: wrap;
     }
 
