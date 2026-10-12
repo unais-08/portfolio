@@ -5,13 +5,13 @@
     margin-top: 56px;
     padding: clamp(30px, 5vw, 58px);
     border: 1px solid var(--line);
-    background: rgba(255, 255, 255, .22);
+    background: var(--panel);
     transition: background .25s, border-color .25s;
 }
 
 .about-grid:hover {
-    background: #fff;
-    border-color: #b9b8b0;
+    background: var(--panel-hover);
+    border-color: var(--line);
 }
 
 .about-grid::before {

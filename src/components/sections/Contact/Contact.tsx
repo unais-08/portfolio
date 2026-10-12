@@ -3,6 +3,7 @@ import { site } from '../../../data/site'
 import { Arrow } from '../../ui/Arrow'
 import { SectionLabel } from '../../ui/SectionLabel'
 import './Contact.css'
+import { SocialIcon } from '../../ui/SocialIcon'
 
 const links = [
   { label: 'GitHub', href: site.github },
@@ -57,7 +58,7 @@ export function ContactSection() {
           {links.map(({ label, href }) => (
             <li key={label}>
               <a href={href} target="_blank" rel="noreferrer">
-                {label}
+                <span className="contact-link-label"><SocialIcon name={label === 'GitHub' ? 'github' : label === 'LinkedIn' ? 'linkedin' : 'resume'} />{label}</span>
                 <span className="contact-link-arrow">
                   <Arrow />
                 </span>

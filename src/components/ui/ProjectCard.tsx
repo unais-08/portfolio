@@ -1,5 +1,6 @@
 import type { Project } from '../../data/site'
 import { Arrow } from './Arrow'
+import { SocialIcon } from './SocialIcon'
 
 export function ProjectCard({ project }: { project: Project }) {
   return <article className="project-card">
@@ -9,7 +10,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <div className="tag-list">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
     <div className="project-card-actions">
       {project.liveUrl ? <a className="card-link" href={project.liveUrl} target="_blank" rel="noreferrer">Visit <Arrow /></a> : <span className="card-link is-disabled" aria-label="Live project unavailable">Visit unavailable</span>}
-      <a className="card-link" href={project.githubUrl} target="_blank" rel="noreferrer">GitHub <Arrow /></a>
+      <a className="card-link" href={project.githubUrl} target="_blank" rel="noreferrer"><SocialIcon name="github" />GitHub <Arrow /></a>
     </div>
   </article>
 }

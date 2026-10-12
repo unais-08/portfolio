@@ -1,4 +1,5 @@
 import './Hero.css'
+import { SocialIcon } from '../../ui/SocialIcon'
 
 type HeroProps = {
   site: {
@@ -81,7 +82,7 @@ export default function Hero({ site }: HeroProps) {
             </a>
 
             <a className="text-link" href={site.github} target="_blank" rel="noreferrer">
-              GitHub <span aria-hidden="true">↗</span>
+              <SocialIcon name="github" /> GitHub <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

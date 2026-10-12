@@ -9,6 +9,15 @@
     <meta property="og:description" content="Projects and engineering notes from Unais." />
     <meta property="og:type" content="website" />
     <title>Unais — Software Engineer</title>
+    <script>
+      try {
+        if (localStorage.getItem('portfolio-theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      } catch {
+        // The site defaults to light theme when storage is unavailable.
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

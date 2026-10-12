@@ -4,6 +4,22 @@ import { Arrow } from '../ui/Arrow'
 
 export function Header({ detail = false }: { detail?: boolean }) {
   const [open, setOpen] = useState(false)
+  const [isDark, setIsDark] = useState(() => document.documentElement.dataset.theme === 'dark')
+
+  const toggleTheme = () => {
+    const nextIsDark = !isDark
+    setIsDark(nextIsDark)
+    if (nextIsDark) {
+      document.documentElement.dataset.theme = 'dark'
+    } else {
+      delete document.documentElement.dataset.theme
+    }
+    try {
+      window.localStorage.setItem('portfolio-theme', nextIsDark ? 'dark' : 'light')
+    } catch {
+      // The theme still changes for this visit if storage is unavailable.
+    }
+  }
 
   const close = () => setOpen(false)
 
@@ -45,6 +61,20 @@ export function Header({ detail = false }: { detail?: boolean }) {
         <a href={detail ? '/#contact' : '#contact'} onClick={close}>
           Contact
         </a>
+
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={toggleTheme}
+          aria-label={`Theme is ${isDark ? 'dark' : 'light'}. Switch to ${isDark ? 'light' : 'dark'} theme.`}
+          aria-pressed={isDark}
+        >
+          <span className="theme-toggle-label">Theme</span>
+          <span className="theme-toggle-value">{isDark ? 'Dark' : 'Light'}</span>
+          <span className="theme-toggle-track" aria-hidden="true">
+            <span className="theme-toggle-thumb" />
+          </span>
+        </button>
 
         <a
           className="button nav-contact"
