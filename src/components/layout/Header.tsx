@@ -21,6 +21,22 @@ export function Header({ detail = false }: { detail?: boolean }) {
     }
   }
 
+  const themeToggle = (className: string) => (
+    <button
+      className={className}
+      type="button"
+      onClick={toggleTheme}
+      aria-label={`Theme is ${isDark ? 'dark' : 'light'}. Switch to ${isDark ? 'light' : 'dark'} theme.`}
+      aria-pressed={isDark}
+    >
+      <span className="theme-toggle-label">Theme</span>
+      <span className="theme-toggle-value">{isDark ? 'Dark' : 'Light'}</span>
+      <span className="theme-toggle-track" aria-hidden="true">
+        <span className="theme-toggle-thumb" />
+      </span>
+    </button>
+  )
+
   const close = () => setOpen(false)
 
   return (
@@ -40,6 +56,7 @@ export function Header({ detail = false }: { detail?: boolean }) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls="main-nav"
+        aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
       >
         <span>{open ? 'Close' : 'Menu'}</span>
         <i aria-hidden="true">{open ? '×' : '☰'}</i>
@@ -62,19 +79,7 @@ export function Header({ detail = false }: { detail?: boolean }) {
           Contact
         </a>
 
-        <button
-          className="theme-toggle"
-          type="button"
-          onClick={toggleTheme}
-          aria-label={`Theme is ${isDark ? 'dark' : 'light'}. Switch to ${isDark ? 'light' : 'dark'} theme.`}
-          aria-pressed={isDark}
-        >
-          <span className="theme-toggle-label">Theme</span>
-          <span className="theme-toggle-value">{isDark ? 'Dark' : 'Light'}</span>
-          <span className="theme-toggle-track" aria-hidden="true">
-            <span className="theme-toggle-thumb" />
-          </span>
-        </button>
+        {themeToggle('theme-toggle mobile-theme-toggle')}
 
         <a
           className="button nav-contact"
@@ -85,6 +90,7 @@ export function Header({ detail = false }: { detail?: boolean }) {
         >
           Resume <Arrow />
         </a>
+        {themeToggle('theme-toggle desktop-theme-toggle')}
       </nav>
     </header>
   )

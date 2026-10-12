@@ -31,13 +31,31 @@
     border: 1px solid var(--line);
     display: flex;
     flex-direction: column;
-    transition: background .25s, transform .25s;
+    transition: background .25s, border-color .25s, color .25s, transform .25s;
 }
 
 .project-card:hover {
-    background: var(--accent);
-    color: var(--accent-ink);
+    background: var(--project-hover-bg);
+    border-color: var(--project-hover-line);
+    color: var(--project-hover-ink);
     transform: translateY(-5px);
+}
+
+.project-card:hover .project-card-top,
+.project-card:hover p,
+.project-card:hover .card-link.is-disabled {
+    color: var(--project-hover-muted);
+}
+
+.project-card:hover .tag-list span {
+    color: var(--project-hover-ink);
+    border-color: var(--project-hover-line);
+    background: var(--project-hover-tag);
+}
+
+.project-card:hover .card-link:not(.is-disabled) {
+    color: var(--project-hover-ink);
+    border-bottom-color: currentColor;
 }
 
 .project-card-top { display: flex; justify-content: space-between; color: var(--muted); font: 500 11px 'DM Mono', monospace; letter-spacing: .11em; text-transform: uppercase; }

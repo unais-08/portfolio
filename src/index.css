@@ -22,6 +22,14 @@
     --button-bg: #1d1d1b;
     --button-fg: #fff;
     --link-accent: #355dff;
+    --project-hover-bg: #eaf2ce;
+    --project-hover-ink: #22251b;
+    --project-hover-muted: #555b49;
+    --project-hover-line: #c5d19e;
+    --project-hover-tag: rgba(255, 255, 255, .36);
+    --hero-primary-bg: #355dff;
+    --hero-primary-hover: #294bd6;
+    --hero-primary-fg: #fff;
 }
 
 :root[data-theme='dark'] {
@@ -41,6 +49,14 @@
     --button-bg: #d9ff52;
     --button-fg: #171a13;
     --link-accent: #a9bdff;
+    --project-hover-bg: #252d1d;
+    --project-hover-ink: #f0f1e9;
+    --project-hover-muted: #c1c6b5;
+    --project-hover-line: #49543a;
+    --project-hover-tag: rgba(255, 255, 255, .045);
+    --hero-primary-bg: #a9bdff;
+    --hero-primary-hover: #bdcbff;
+    --hero-primary-fg: #171a13;
 }
 
 :root[data-theme='dark'] .section-label span:first-child {
@@ -132,6 +148,15 @@ button:focus-visible {
     opacity: 1;
 }
 
+.main-nav .nav-contact {
+    gap: 10px;
+    padding: 9px 15px;
+    border: 1px solid rgba(29, 29, 27, .24);
+    border-radius: 999px;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
+}
+
 .theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -144,6 +169,35 @@ button:focus-visible {
     font: 12px 'DM Mono', monospace;
     cursor: pointer;
     transition: background .2s, border-color .2s;
+}
+
+.mobile-theme-toggle {
+    display: none;
+}
+
+.desktop-theme-toggle {
+    padding: 5px 8px;
+    gap: 7px;
+    margin-left: 16px;
+    font-size: 10px;
+}
+
+.desktop-theme-toggle .theme-toggle-label {
+    display: none;
+}
+
+.desktop-theme-toggle .theme-toggle-track {
+    width: 32px;
+    height: 18px;
+}
+
+.desktop-theme-toggle .theme-toggle-thumb {
+    width: 14px;
+    height: 14px;
+}
+
+.desktop-theme-toggle[aria-pressed='true'] .theme-toggle-thumb {
+    transform: translateX(14px);
 }
 
 .theme-toggle:hover {
@@ -533,10 +587,11 @@ h2 em {
         width: fit-content;
         min-height: 44px;
         margin-top: 14px;
-        padding: 10px 18px;
+        padding: 9px 15px;
     }
 
     .main-nav .theme-toggle {
+        display: flex;
         width: 100%;
         min-height: 48px;
         margin-top: 4px;
@@ -547,6 +602,14 @@ h2 em {
         border-radius: 0;
         padding: 10px 4px;
         font-size: 13px;
+    }
+
+    .main-nav .mobile-theme-toggle {
+        display: flex;
+    }
+
+    .main-nav .desktop-theme-toggle {
+        display: none;
     }
 
     .main-nav .theme-toggle:hover {
